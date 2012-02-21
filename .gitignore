@@ -1,2 +1,9 @@
 # ignore PyCharm files
 .idea/**/*
+
+#Windows
+Thumbs.db
+#OSX
+.DS_Store
+#Python
+*.pyc
