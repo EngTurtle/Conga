@@ -12,21 +12,24 @@ class Course(models.Model):
 		return self.course_code
 
 class Student(models.Model):
+	user = models.OneToOneField(User)
 
-	user = models.ForeignKey(User)
 	student_number = models.SmallIntegerField(verbose_name='student number', primary_key=True)
+
+class Type(models.Model):
+	"""This represents the types of files on the site"""
+	type_name = models.CharField(max_length=50)
+
+	def __unicode__(self):
+		return self.type_name
 
 class Student_file(models.Model):
 	course = models.ForeignKey(Course)
 	note = models.FileField(upload_to='notes')
-	owner = models.ForeignKey(Student)
+	owner = models.ForeignKey(User)
 	last_modified = models.DateTimeField(auto_now=True)
-
-	TYPE_CHOICES = ((u'NO', u'Notes'),
-	                (u'FE', u'Final Exam'),
-	                (u'TQ', u'Tests & Quizzes'),
-	                (u'AS', u'Assignments'))
-	note_type = models.CharField(max_length=2, choices=TYPE_CHOICES)
+	name = models.CharField(max_length=100)
+	note_type = models.ForeignKey(Type)
 
 	def __unicode__(self):
 		return self.note.name

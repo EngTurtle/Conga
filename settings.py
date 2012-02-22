@@ -56,7 +56,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = 'C:/Users/Oliver/Notesharing/Conga/media_files/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -65,10 +65,10 @@ STATIC_URL = '/static/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = ''
 
 # Additional locations of static files
-STATICFILES_DIRS = (
+STATICFILES_DIRS = ("C:/Users/Oliver/Notesharing/Conga/static_files"
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -116,6 +116,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     "Conga.engsci_conga",
+
+    # Uncomment the next line to enable the registration interface
+    #"Conga.registration",
 )
 
 # A sample logging configuration. The only tangible logging
@@ -140,3 +143,6 @@ LOGGING = {
         },
     }
 }
+
+# User profile information
+AUTH_PROFILE_MODULE = "engsci_conga.Student"
