@@ -100,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'testing.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = ('C:/Users/Oliver/Notesharing/testing/templates',)
 
@@ -114,7 +114,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
+    "Conga.engsci_conga",
 )
 
 # A sample logging configuration. The only tangible logging
