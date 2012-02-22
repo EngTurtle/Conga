@@ -1,5 +1,5 @@
 # ignore PyCharm files
-.idea/**/*
+.idea/*
 
 #Windows
 Thumbs.db
@@ -7,3 +7,8 @@ Thumbs.db
 .DS_Store
 #Python
 *.pyc
+#other apps
+registration/*
+
+#settings
+settings.py
