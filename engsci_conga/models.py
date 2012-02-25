@@ -2,6 +2,7 @@ __author__ = 'Oliver'
 
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 class Course(models.Model):
 	year = models.SmallIntegerField(verbose_name='Course Year')
@@ -28,7 +29,8 @@ class File_type(models.Model):
 
 class Student_file(models.Model):
 	course = models.ForeignKey(Course)
-	note = models.FileField(upload_to='notes')
+	note = models.FileField(upload_to='notes/%s/'
+                            % str(datetime.now()).replace('-','_').replace(' ', '_').replace(':', '_').replace('.', '_'))
 	owner = models.ForeignKey(User)
 	last_modified = models.DateTimeField(auto_now=True)
 	name = models.CharField(max_length=100)
