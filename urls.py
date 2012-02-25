@@ -6,6 +6,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', 'engsci_conga.views.home', name="root"),
+
     # Examples:
     # url(r'^$', 'testing.views.home', name='home'),
     # url(r'^testing/', include('testing.foo.urls')),
@@ -17,6 +19,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # Conga
-    url(r'^$', include('engsci_conga.views.home')),
     url(r'^course/', include('engsci_conga.urls')),
 )

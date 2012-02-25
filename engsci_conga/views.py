@@ -6,10 +6,10 @@ from models import *
 
 #def file_upload(request):
 
-def home():
-	return HttpResponse("Hello, world!")
+def home(request):
+	return render_to_response('base.html')
 
-def course_view(request, course):
+def coursesview(request, course):
 	"""
 	This view gives a dictionary to the template in the following format:
 	{'course_name' : course name in a unicode string,
@@ -20,7 +20,7 @@ def course_view(request, course):
 									   ('filename2', file_url2)...],
 					   ...}
 	"""
-	c = get_object_or_404(Course, course_code=course)
+	c = get_object_or_404(Course, course_code=course.upper())
 	types = File_type.objects.all()
 	files_by_type = {}
 	for this_type in types:
@@ -32,5 +32,5 @@ def course_view(request, course):
 	response = {'course_name' : c.course_name,
 				'course_code' : c.course_code,
 				'files_by_type': files_by_type}
-	return render_to_response('need a template', response)
+	return HttpResponse(str(response))
 	# TODO need a template here
