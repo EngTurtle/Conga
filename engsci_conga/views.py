@@ -15,10 +15,10 @@ def home(request):
                     }
     }
     """
-    courses = Course.objects.filter(year=y)
+    courses = Course.objects.all()
     courses = [dict(course_name=c.course_name, course_code=c.course_code, course_year=c.year,
-                    course_url='/course/%s/' % c.course_code.lower()) for c in course_year]
-    return render_to_response('home.html', {'course_list': course_list})
+                    course_url='/course/%s/' % c.course_code.lower()) for c in courses]
+    return render_to_response('home.html', {'course_list': courses})
 
 
 def coursesview(request, course):
@@ -45,4 +45,3 @@ def coursesview(request, course):
     			'course_code' : c.course_code,
     			'files_by_type': files_by_type}
     return render_to_response('course.html', {'response': response})
-    # TODO need a template here
