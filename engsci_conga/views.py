@@ -1,7 +1,6 @@
 __author__ = 'Oliver'
 
 from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponse
 from models import *
 
 #def file_upload(request):
@@ -38,9 +37,11 @@ def coursesview(request, course):
     for this_type in types:
         files_of_type = Student_file.objects.filter(file_type=this_type,
         											course=c)
-        files_by_type[this_type.type_name] = [(f.name, f.note.url) for f in
-                                                          files_of_type]
-
+        files_by_type[this_type.type_name] = [dict(file_name=f.name, file_url=f.note.url)
+                                              for f in files_of_type]
+    for key in files_by_type.keys():
+        if not files_by_type[key]:
+            files_by_type.pop(key)
     response = {'course_name' : c.course_name,
     			'course_code' : c.course_code,
     			'files_by_type': files_by_type}
