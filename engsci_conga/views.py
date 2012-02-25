@@ -14,7 +14,7 @@ def home(request):
                             course_code=c.course_code,
                             course_url='/course/%s/' % c.course_code.lower()) for c in course_year]
         course_list[y] = course_year
-    return render_to_response('base.html', {'course_list': course_list})
+    return render_to_response('home.html', {'course_list': course_list})
 
 
 def coursesview(request, course):
@@ -40,5 +40,4 @@ def coursesview(request, course):
     response = {'course_name' : c.course_name,
     			'course_code' : c.course_code,
     			'files_by_type': files_by_type}
-    return HttpResponse(str(response))
-    # TODO need a template here
+    return render_to_response('base.html', {'response': response})

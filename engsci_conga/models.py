@@ -32,6 +32,7 @@ class Student_file(models.Model):
 	last_modified = models.DateTimeField(auto_now=True)
 	name = models.CharField(max_length=100)
 	file_type = models.ForeignKey(File_type)
+	year = models.SmallIntegerField(verbose_name = 'Year of file')
 
 	def __unicode__(self):
 		return self.note.name
