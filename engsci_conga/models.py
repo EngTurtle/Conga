@@ -11,6 +11,8 @@ class Course(models.Model):
 	def __unicode__(self):
 		return self.course_code
 
+    # TODO define get_absolute_url function
+
 class Student(models.Model):
 	user = models.OneToOneField(User)
 
