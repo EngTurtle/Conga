@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}EngSci Courses{% endblock %}
+{% block heading%}<span style="font-family: Georgia !important">Welcome to
+    EngSci
+    Courses</span>{%endblock%}
 {% block content %}
 
 <div class="grid_2 alpha">
@@ -8,6 +11,17 @@
 </div></div>
 <div class="grid_14 omega">
     <div class="squeeze">
-        hi!
+        {%for year in course_list %}
+            <h2>Year {{ year }}</h2>
+            <ul>
+                {%for course in year %}
+                <li><a href="{{ course.course_url }}"><b>{{
+                    course.course_code }}</b>
+                    {{course.course_name}} </a></li>
+                {%endfor%}
+            </ul>
+        {%endfor%}
+
+
     </div></div>
 {% endblock content %}
