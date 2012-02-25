@@ -9,20 +9,15 @@ from models import *
 def home(request):
     """
     The dictionary this function gives to the template is the the following format:
-    {'course_list' : { 1 : [ {course_name='Praxis II', course_code='ESC102', course_url='/courses/esc102/'},
-                             {course_name='Calculus II', course_code='MAT195', course_url='/course/mat105/'},
-                             ...]
-                       2 : [ {course_name='Engineering Design', course_code'AER201', course_url='/courses/aer201/'} ]
-                      }
+    {'course_list': {[ {course_name='Praxis II', course_code='ESC102', course_url='/courses/esc102/', course_year=1},
+                       {course_name='Calculus II', course_code='MAT195', course_url='/course/mat105/', course_year=1},
+                       {course_name='Engineering Design', course_code'AER201', course_url='/courses/aer201/', course_year=2} ]
+                    }
     }
     """
-    course_list = {}
-    for y in range(1,5):
-        course_year = Course.objects.filter(year=y)
-        course_year = [dict(course_name=c.course_name,
-                            course_code=c.course_code,
-                            course_url='/course/%s/' % c.course_code.lower()) for c in course_year]
-        course_list[str(y)] = course_year
+    courses = Course.objects.filter(year=y)
+    courses = [dict(course_name=c.course_name, course_code=c.course_code, course_year=c.year,
+                    course_url='/course/%s/' % c.course_code.lower()) for c in course_year]
     return render_to_response('home.html', {'course_list': course_list})
 
 
