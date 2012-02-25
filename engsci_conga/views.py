@@ -7,7 +7,11 @@ from models import *
 #def file_upload(request):
 
 def home(request):
-	return render_to_response('base.html')
+	course_list = []
+	for course in Course.objects.all():
+		course_url = '/course/%s/' % course.course_code.lower()
+		course_list.append((course.course_code, course.course_name, course_url))
+	return render_to_response('base.html', {'course_list': course_list})
 
 def coursesview(request, course):
 	"""
