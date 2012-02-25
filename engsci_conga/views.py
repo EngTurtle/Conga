@@ -26,7 +26,7 @@ def coursesview(request, course):
 	{'course_name' : course name in a unicode string,
 	 'course_code' : course code in a unicode string,
 	 'types' : [ {type_name=..., type_weight=...int}, repeating...]
-	 'files': [ {name=
+	 'files': [ {name=..., type=...str, type_weighting=...int, url=...}, repeating ] }
 	"""
     c = get_object_or_404(Course, course_code=course.upper())
     del course
