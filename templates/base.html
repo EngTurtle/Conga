@@ -1,13 +1,15 @@
 <!doctype html>
 <html>
 <head>
-    <title>{% block title %}{% endblock %}| EngSci Courses</title>
+    <title>{% block title %}{% endblock %}</title>
     <link type="text/css" rel="stylesheet"
           href="/static/css/h5bp.css" />
     <link type="text/css" rel="stylesheet" href="/static/css/960.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,800,700' rel='stylesheet' type='text/css' />
     <link type="text/css" rel="stylesheet" href="/static/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="/static/js/site.js" type="text/javascript"></script>
+
 </head>
 <body>
         <header id="site-header">
@@ -18,7 +20,7 @@
                 </div>
                 <div id="filter-and-signin" class="grid_8">
                     <p id="users" class="top"><a href="#">Register</a> or <a href="#">Sign in</a></p>
-                    <form class="js"><input type="text" id="filter" class="bottom" placeholder="Filter courses by name or code"></input></form>
+                    <form class="js"><input type="text" id="filter" class="bottom" placeholder="Filter courses by name or code"></form>
                 </div>
                 <div id="call-to-action" class="grid_4 omega clearfix">
                     <h2>Call-to-action</h2>
@@ -26,7 +28,7 @@
             </div>
         </header>
 
-        <div id="course-list" class="js">
+        <div id="course-list" class="clearfix">
             <div class="container_16 clearfix">
                 <h1>All courses</h1>
             </div>

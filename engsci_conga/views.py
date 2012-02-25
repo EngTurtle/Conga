@@ -11,7 +11,7 @@ def home(request):
 	for course in Course.objects.all():
 		course_url = '/course/%s/' % course.course_code.lower()
 		course_list.append((course.course_code, course.course_name, course_url))
-	return render_to_response('base.html', {'course_list': course_list})
+	return render_to_response('home.html', {'course_list': course_list})
 
 def coursesview(request, course):
 	"""
@@ -36,5 +36,5 @@ def coursesview(request, course):
 	response = {'course_name' : c.course_name,
 				'course_code' : c.course_code,
 				'files_by_type': files_by_type}
-	return HttpResponse(str(response))
-	# TODO need a template here
+
+	return render_to_response('course.html', {'response': response})
