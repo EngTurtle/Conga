@@ -1,0 +1,108 @@
+/* Typography */
+
+body {
+    font-family: "Open Sans", "Lucida Grande", Tahoma, sans-serif;
+    background: rgb(230,230,230);
+}
+
+/* Graphics */
+#site-header {
+    background-color: rgb(26,26,26);
+    border-bottom: 4px solid #fff;
+
+}
+
+/* Logo */
+#site-header {
+    color: #eee;
+}
+#site-header #page-logo {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+}
+#site-header a {
+    color: rgb(0,128,255);
+    text-decoration: none;
+}
+
+#site-header #page-logo a b {
+    font-family: "Helvetica Neue", Arial, Helvetica, serif;
+    font-style: normal;
+}
+
+#site-header #course-button,#site-header #course-button a {
+    display: block;
+    width: 100%;
+}
+#site-header #course-button a {
+    font-weight: 800;
+    width: 100%;
+    font-size: 20px;
+    color: rgb(0,20,69);
+    text-decoration: none;
+    background: #fff;
+    padding: 12px 0 12px 12px;
+}
+
+#site-header .top {
+    height: 28px;
+    padding: 12px 0 0 0; /* 40px in total */
+}
+
+#site-header .bottom{
+    height: 40px;
+    padding: 0px 0 2px 0; /* 42px in total */
+}
+
+#site-header #users {
+    text-align: right;
+    position: relative;
+    top: -6px;
+    margin-bottom: 0;
+}
+
+#site-header #filter {
+    height: 50px;
+    padding: 0 10px;
+    width: 100%;
+    font-family: "Open Sans", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 20px;
+    background: #fff;
+    opacity: 0.8;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    border: 1px solid rgb(0,128,255);
+}
+
+#site-header #filter:focus {
+    opacity: 1.0;
+}
+
+#site-header #filter:hover {
+    opacity: 1.0;
+}
+
+/* Course list */
+#course-list {
+    background: #fff;
+    border-top: 4px solid rgb(0,128,255);
+}
+
+#course-list h1 {
+    font-weight: 100;
+}
+
+#articles {
+    padding-top: 12px;
+}
+
+#content {
+    min-height: 400px;
+    border: 1px solid #ccc;
+    box-shadow: #000000 0 0 4px;
+    background: #fff;
+
+}
