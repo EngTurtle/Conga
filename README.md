@@ -11,6 +11,8 @@ If you're here, you've probably been "recruited" here through other means. So yo
 
 So have fun everyone!
 
+[Imgur](http://i.imgur.com/E31Ek.jpg)
+
 Instructions to try out the site
 
 1. To run this site, install python and django per the instructions on this site: https://docs.djangoproject.com/en/1.3/intro/install/
