@@ -15,10 +15,10 @@ def home(request):
                     }
     }
     """
-    courses = Course.objects.filter(year=y)
+    courses = Course.objects.all()
     courses = [dict(course_name=c.course_name, course_code=c.course_code, course_year=c.year,
-                    course_url='/course/%s/' % c.course_code.lower()) for c in course_year]
-    return render_to_response('home.html', {'course_list': course_list})
+                    course_url='/course/%s/' % c.course_code.lower()) for c in courses]
+    return render_to_response('home.html', {'course_list': courses})
 
 
 def coursesview(request, course):
@@ -38,9 +38,11 @@ def coursesview(request, course):
     for this_type in types:
         files_of_type = Student_file.objects.filter(file_type=this_type,
         											course=c)
-        files_by_type[this_type.type_name] = [(f.name, f.note.url) for f in
-                                                          files_of_type]
-
+        files_by_type[this_type.type_name] = [dict(file_name=f.name, file_url=f.note.url) for f in
+                                              files_of_type]
+    for key in files_by_type.keys():
+        if not files_by_type[key]:
+            files_by_type.pop(key)
     response = {'course_name' : c.course_name,
     			'course_code' : c.course_code,
     			'files_by_type': files_by_type}

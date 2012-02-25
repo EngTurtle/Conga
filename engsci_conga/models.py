@@ -11,7 +11,7 @@ class Course(models.Model):
 	def __unicode__(self):
 		return self.course_code
 
-    # TODO define get_absolute_url function
+	# TODO define get_absolute_url function
 
 class Student(models.Model):
 	user = models.OneToOneField(User)
@@ -21,6 +21,7 @@ class Student(models.Model):
 class File_type(models.Model):
 	"""This represents the types of files on the site"""
 	type_name = models.CharField(max_length=50)
+	type_weighting = models.SmallIntegerField()
 
 	def __unicode__(self):
 		return self.type_name
