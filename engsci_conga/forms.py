@@ -15,3 +15,6 @@ class File_upload(forms.Form):
 	course = forms.ChoiceField(choices=COURSE_CHOICES)
 	type = forms.ChoiceField(choices=TYPE_CHOICES)
 	file = forms.FileField(required=True)
+
+	# TODO write a function that renames the uploaded files in a structured
+	# way to prevent blackboard's one filename problem

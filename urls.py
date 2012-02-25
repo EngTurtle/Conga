@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # Conga
-    url(r'^$', include(engsci_conga.views.home))
+    url(r'^$', include('engsci_conga.views.home')),
+    url(r'^course/', include('engsci_conga.urls')),
 )

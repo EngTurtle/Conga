@@ -16,7 +16,7 @@ class Student(models.Model):
 
 	student_number = models.SmallIntegerField(verbose_name='student number', primary_key=True)
 
-class Type(models.Model):
+class File_type(models.Model):
 	"""This represents the types of files on the site"""
 	type_name = models.CharField(max_length=50)
 
@@ -29,7 +29,7 @@ class Student_file(models.Model):
 	owner = models.ForeignKey(User)
 	last_modified = models.DateTimeField(auto_now=True)
 	name = models.CharField(max_length=100)
-	note_type = models.ForeignKey(Type)
+	file_type = models.ForeignKey(File_type)
 
 	def __unicode__(self):
 		return self.note.name
