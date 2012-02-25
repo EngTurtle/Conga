@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}EngSci Courses{% endblock %}
-{% block heading%}<span style="font-family: Georgia !important">Welcome to
+{% block heading%}<p
+        style="font-family: Georgia !important; font-size: 2em; font-style:
+        italic; ">Welcome
+    to
     EngSci
-    Courses</span>{%endblock%}
+    Courses.</p>{%endblock%}
 {% block content %}
 
 {% regroup course_list|dictsort:"course_year" by course_year as year_list%}

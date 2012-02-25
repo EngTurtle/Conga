@@ -22,10 +22,20 @@ body {
     font-weight: normal;
     margin: 0;
 }
-#site-header a {
-    color: rgb(0,128,255);
+
+a, a:visited {
+    color: rgba(0,128,255,255);
     text-decoration: none;
 }
+
+a:hover {
+    color: rgba(0,100,200,255);
+}
+
+a:visited {
+
+}
+
 
 #site-header #page-logo a b {
     font-family: "Helvetica Neue", Arial, Helvetica, serif;
@@ -44,6 +54,19 @@ body {
     text-decoration: none;
     background: #fff;
     padding: 12px 0 12px 12px;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    position: relative;
+    top: 0;
+}
+
+#site-header #course-button.selected a {
+    height: 36px;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
 }
 
 #site-header .top {
@@ -71,7 +94,7 @@ body {
     font-size: 20px;
     background: #fff;
     opacity: 0.8;
-    -webkit-transition: all 0.1s;
+    -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
     border: 1px solid rgb(0,128,255);
@@ -89,6 +112,8 @@ body {
 #course-list {
     background: #fff;
     border-top: 4px solid rgb(0,128,255);
+    position: relative;
+    box-shadow: #bbb 0 4px 4px;
 }
 
 #course-list h1 {
@@ -102,7 +127,7 @@ body {
 #content {
     min-height: 400px;
     border: 1px solid #ccc;
-    box-shadow: #000000 0 0 4px;
+    box-shadow: #bbb 0 0 8px;
     background: #fff;
 
 }
