@@ -3,7 +3,7 @@ __author__ = 'Oliver'
 from django.shortcuts import render_to_response, get_object_or_404
 from models import *
 
-#def file_upload(request):
+#TODO def file_upload(request):
 
 def home(request):
     """
@@ -24,26 +24,18 @@ def coursesview(request, course):
     """
 	This view gives a dictionary to the template in the following format:
 	{'course_name' : course name in a unicode string,
-	'course_code' : course code in a unicode string,
-	'files_by_type': {'type name 1' : [('filename1', file_url1)
-									   ('filename2', file_url2)...],
-					  'type name 2' : [('filename1', file_url1)
-									   ('filename2', file_url2)...],
-					   ...}
+	 'course_code' : course code in a unicode string,
+	 'types' : [ {type_name=..., type_weight=...int}, repeating...]
+	 'files': [ {name=
 	"""
     c = get_object_or_404(Course, course_code=course.upper())
-    types = File_type.objects.all()
-    files_by_type = {}
-    for this_type in types:
-        files_of_type = Student_file.objects.filter(file_type=this_type,
-        											course=c)
-        files_by_type[this_type.type_name] = [dict(file_name=f.name, file_url=f.note.url)
-                                              for f in files_of_type]
-    for key in files_by_type.keys():
-        if not files_by_type[key]:
-            files_by_type.pop(key)
+    del course
+    files = Student_file.objects.filter(course=c)
+    files = [dict(name=f.name, type=f.file_type.type_name,
+                  type_weighting=f.file_type.type_weighting, url=f.note.url) for f in files]
+    types = [dict(type_name=t.type_name, type_weighting=t.type_weighting) for t in File_type.objects.all()]
     response = {'course_name' : c.course_name,
     			'course_code' : c.course_code,
-    			'files_by_type': files_by_type}
+                'types' : types,
+    			'files': files}
     return render_to_response('course.html', {'response': response})
-    # TODO need a template here

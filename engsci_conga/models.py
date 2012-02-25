@@ -21,7 +21,7 @@ class Student(models.Model):
 class File_type(models.Model):
 	"""This represents the types of files on the site"""
 	type_name = models.CharField(max_length=50)
-	type_weighting = models.SmallIntegerField()
+	type_weighting = models.SmallIntegerField(unique=True)
 
 	def __unicode__(self):
 		return self.type_name
