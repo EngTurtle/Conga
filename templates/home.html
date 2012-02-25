@@ -11,11 +11,17 @@
 </div></div>
 <div class="grid_14 omega">
     <div class="squeeze">
-        <ul>
         {%for year in course_list %}
-            <h3>{{ year }}</h3>
+            <h2>Year {{ year }}</h2>
+            <ul>
+                {%for course in year %}
+                <li><a href="{{ course.course_url }}"><b>{{
+                    course.course_code }}</b>
+                    {{course.course_name}} </a></li>
+                {%endfor%}
+            </ul>
         {%endfor%}
-        </ul>
+
 
     </div></div>
 {% endblock content %}
