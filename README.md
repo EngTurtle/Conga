@@ -11,7 +11,7 @@ If you're here, you've probably been "recruited" here through other means. So yo
 
 So have fun everyone!
 
-[Imgur](http://i.imgur.com/E31Ek.jpg)
+[What the site looks like for now](http://i.imgur.com/E31Ek.jpg)
 
 Instructions to try out the site
 
