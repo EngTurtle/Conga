@@ -9,6 +9,7 @@ Thumbs.db
 *.pyc
 #other apps
 registration/*
+database/*
 
 #settings
 settings.py
