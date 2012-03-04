@@ -3,30 +3,29 @@
 - EngSci Courses{%endblock%}
 
 {% block heading %}<h1>{{response.course_code}} {{response.course_name}}
-{%endblock%}</h1>
+    {%endblock%}</h1>
 {% block content %}
 
-    <div class="squeeze">
+<div class="squeeze">
 
-{% regroup response.files|dictsort:"type_weighting" by type as type_list%}
+    {% regroup response.files|dictsort:"type_weighting" by type as type_list%}
 
-        {% for type in type_list %}
-        <h2 id="esc-courses-year-{{year.grouper}}">{{ type.grouper }}</h2>
-        <ul>
-{% regroup type.list|dictsort:"year" by year as file_list %}
-            {%for year in file_list %}
-            <li> {{year.grouper}}
-                <ul>
-                    {%for file in year.list %}
-                        <li><a href="{{file.url}}">{{file.name}}</a></li>
-                    {%endfor%}
-                </ul>
+    {% for type in type_list %}
+    <h2 id="esc-courses-year-{{year.grouper}}">{{ type.grouper }}</h2>
+    <ul>
+        {% regroup type.list|dictsort:"year" by year as file_list %}
+        {% for year in file_list %}
+        <li> {{year.grouper}}
+            <ul>
+                {%for file in year.list %}
+                <li><a href="{{file.note.url}}">{{file.name}}</a></li>
+                {%endfor%}
+            </ul>
 
-            </li>
-            {%endfor%}
-        </ul>
         </li>
-        {% endfor %}
+        {%endfor%}
+    </ul>
+    {% endfor %}
 
-    </div>
+</div>
 {% endblock content %}
