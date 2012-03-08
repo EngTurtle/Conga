@@ -15,13 +15,17 @@ def home(request):
                     }
     }
     """
+    is_logged_in = False
+    if request.user.is_authenticated():
+        is_logged_in = True
     courses = Course.objects.all()
     courses = [dict(course_name = c.course_name, course_code = c.course_code, course_year = c.year,
                     course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
-    return render_to_response('home.html', {'course_list': courses})
+    return render_to_response('home.html', {'course_list': courses,
+                                            'is_logged_in': is_logged_in})
 
 
-def coursesview(request, course):
+def courses_view(request, course):
     """
 	This view gives a dictionary to the template in the following format:
 	{'course_name' : course name in a unicode string,
@@ -29,6 +33,9 @@ def coursesview(request, course):
 	 'types' : [ {type_name=..., type_weight=...int}, repeating...]
 	 'files': [ {name=..., type=...str, type_weighting=...int, url=..., year=...int}, repeating ] }
 	"""
+    is_logged_in = False
+    if request.user.is_authenticated():
+        is_logged_in = True
     c = get_object_or_404(Course, course_code = course.upper())
     del course
     files = Student_file.objects.filter(course = c)
@@ -36,5 +43,6 @@ def coursesview(request, course):
     response = {'course_name': c.course_name,
                 'course_code': c.course_code,
                 'types': types,
-                'files': files}
-    return render_to_response('course.html', {'response': response})
+                'files': files,
+                'is_logged_in': is_logged_in}
+    return render_to_response('course.html', response)
