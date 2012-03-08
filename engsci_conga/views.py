@@ -24,6 +24,8 @@ def home(request):
     return render_to_response('home.html', {'course_list': courses,
                                             'is_logged_in': is_logged_in})
 
+    # TODO add a builtin login box
+
 
 def courses_view(request, course):
     """

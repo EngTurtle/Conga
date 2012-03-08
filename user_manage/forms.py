@@ -20,8 +20,6 @@ class RegistrationForm(reg_forms.RegistrationForm):
                              label = _("Email address"),
                              initial = u"@utoronto.ca")
 
-
-class RegistrationEmailRestriction(reg_forms.RegistrationFormNoFreeEmail):
     allowed_domains = [u'utoronto.ca', u'ecf.utoronto.ca', u'toronto.edu']
 
     def clean_email(self):
@@ -33,3 +31,9 @@ class RegistrationEmailRestriction(reg_forms.RegistrationFormNoFreeEmail):
         if email_domain not in self.allowed_domains:
             raise forms.ValidationError(_("This service is only for University of Toronto students and staff."))
         return self.cleaned_data['email']
+
+    def clean_student_number(self):
+        """
+        Checks if the supplied student number is a valid U of T number.
+        """
+        #TODO write a check for student numbers
