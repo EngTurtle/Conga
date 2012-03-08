@@ -11,16 +11,25 @@ from django.utils.translation import ugettext_lazy as _
 # lands in trunk, this will no longer be necessary.
 attrs_dict = {'class': 'required'}
 
+allowed_domains = [u'utoronto.ca', u'ecf.utoronto.ca', u'toronto.edu']
+
+def is_student_number(number):
+    """
+    Checks if the supplied student number is a valid U of T number.
+    By Tony Liao
+    """
+    return len(str(number)) == 9 and number / 10000000 == 99
+
 
 class RegistrationForm(reg_forms.RegistrationForm):
     student_number = forms.IntegerField(max_value = 999999999, min_value = 1,
-                                        label = u"Student Number")
+                                        label = u"Student Number"
+    validate =)
     email = forms.EmailField(widget = forms.TextInput(attrs = dict(attrs_dict,
                                                                    maxlength = 75)),
                              label = _("Email address"),
                              initial = u"@utoronto.ca")
 
-    allowed_domains = [u'utoronto.ca', u'ecf.utoronto.ca', u'toronto.edu']
 
     def clean_email(self):
         """
@@ -28,7 +37,7 @@ class RegistrationForm(reg_forms.RegistrationForm):
         email domains.
         """
         email_domain = self.cleaned_data['email'].split('@')[1]
-        if email_domain not in self.allowed_domains:
+        if email_domain not in allowed_domains:
             raise forms.ValidationError(_("This service is only for University of Toronto students and staff."))
         return self.cleaned_data['email']
 
@@ -36,4 +45,7 @@ class RegistrationForm(reg_forms.RegistrationForm):
         """
         Checks if the supplied student number is a valid U of T number.
         """
-        #TODO write a check for student numbers
+        number = self.cleaned_data['student_number']
+        if not is_student_number(number):
+            raise forms.ValidationError(_("Please enter your valid U of T student number."))
+        return self.cleaned_data['student_number']
