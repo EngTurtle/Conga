@@ -104,10 +104,6 @@ a:visited {
     opacity: 1.0;
 }
 
-#site-header #filter:hover {
-    opacity: 1.0;
-}
-
 /* Course list */
 #course-list {
     background: #fff;
