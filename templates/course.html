@@ -8,7 +8,9 @@
 
 <div class="squeeze">
 
-    {% regroup response.files|dictsort:"type_weighting" by type as type_list%}
+    {{types|unordered_list}}
+
+    {% regroup files|dictsort:"type_weighting" by type as type_list%}
 
     {% for type in type_list %}
     <h2 id="esc-courses-year-{{year.grouper}}">{{ type.grouper }}</h2>

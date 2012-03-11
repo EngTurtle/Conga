@@ -54,6 +54,7 @@ a:visited {
     text-decoration: none;
     background: #fff;
     padding: 12px 0 12px 12px;
+    height: 28px;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
@@ -102,6 +103,8 @@ a:visited {
 
 #site-header #filter:focus {
     opacity: 1.0;
+    box-shadow: #fff 0 0 8px;
+
 }
 
 /* Course list */
