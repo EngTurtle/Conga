@@ -22,5 +22,5 @@ urlpatterns = patterns('',
                        url(r'^course/', include('engsci_conga.urls')),
 
                        # User management
-                       url(r'^auth/', include('user_manage.urls'))
-)
+                       url(r'^auth/', include('user_manage.urls')),
+                       )
