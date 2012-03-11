@@ -23,8 +23,7 @@ def is_student_number(number):
 
 class RegistrationForm(reg_forms.RegistrationForm):
     student_number = forms.IntegerField(max_value = 999999999, min_value = 1,
-                                        label = u"Student Number"
-    validate =)
+                                        label = u"Student Number")
     email = forms.EmailField(widget = forms.TextInput(attrs = dict(attrs_dict,
                                                                    maxlength = 75)),
                              label = _("Email address"),

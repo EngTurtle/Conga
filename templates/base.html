@@ -25,9 +25,9 @@
             <p id="course-button" class="bottom"><a href="#">View all courses</a></p>
         </div>
         <div id="filter-and-signin" class="grid_8">
-            <p id="users" class="top">{%if user.is_authenticated %}Howdy!{% else %}<a href="#">Register</a> or
+            <p id="users" class="top">{%if user.is_authenticated %}<strong>{{user.username}}</strong> | {% if user.is_staff %} <a href="/admin">Administration</a> {% endif %} | <a href="#">Log out</a>{% else %}<a href="#">Register</a> or
                 <a
-                        href="/auth/login">Log in</a>{% endif %}</p>
+                        href="{% url django.contrib.auth.views.login %}">Log in</a>{% endif %}</p>
 
             <form class="js"><input type="text" id="filter" class="bottom" placeholder="Filter courses by name or code">
             </form>

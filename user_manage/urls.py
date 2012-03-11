@@ -4,7 +4,7 @@ from django.conf.urls.defaults import patterns, url
 from django.contrib.auth.views import login
 
 urlpatterns = patterns('user_manage.views',
-                       url(r'^register/$', 'register'),
+                       #url(r'^register/$', 'register'),
                        )
 
 urlpatterns += patterns('',
