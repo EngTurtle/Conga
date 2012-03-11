@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% block title %}Log in | EngSci Courses{% endblock %}
+{% block heading%}<p
+        style="font-family: Georgia !important; font-size: 2em; font-style:
+        italic; ">Log in</p>{%endblock%}
 
 {% block content %}
 
@@ -6,12 +10,12 @@
 <p class="error">Sorry, that's not a valid username or password</p>
 {% endif %}
 
-
-<form action="" method="post">{% csrf_token %}
-    <label for="username">User name:</label>
-    <input type="text" name="username" value="" id="username">
-    <label for="password">Password:</label>
-    <input type="password" name="password" value="" id="password">
+<form action="" method="post">
+    {% csrf_token %}
+    <!--<label for="username">User name:</label>-->
+    <input type="text" name="username" value="" id="username" placeholder="Username"><br/>
+    <!--<label for="password">Password:</label>-->
+    <input type="password" name="password" value="" id="password" placeholder="Password">
 
     <input type="submit" value="login"/>
     <input type="hidden" name="next" value="/"/>
