@@ -13,7 +13,7 @@ So have fun everyone!
 
 [What the site looks like for now](http://i.imgur.com/E31Ek.jpg)
 
-Instructions to try out the site
+Instructions to demo the site on a local dev server.
 
 1. To run this site, install python and django per the instructions on this site: https://docs.djangoproject.com/en/1.3/intro/install/
 
