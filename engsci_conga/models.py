@@ -2,6 +2,7 @@ __author__ = 'Oliver'
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 class Course(models.Model):
     year = models.SmallIntegerField(verbose_name = 'Course Year')
@@ -11,7 +12,11 @@ class Course(models.Model):
     def __unicode__(self):
         return self.course_code
 
-        # TODO define get_absolute_url function
+    def get_absolute_url(self):
+        """
+        returns the url of this course.
+        """
+        return reverse('engsci_conga.views.courses_view', kwargs = {'course': self.course_code})
 
 
 class File_type(models.Model):
