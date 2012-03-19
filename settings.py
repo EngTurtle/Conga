@@ -153,3 +153,9 @@ LOGGING = {
 
 # User profile information
 AUTH_PROFILE_MODULE = 'user_manage.models.Student'
+
+# email settings
+EMAIL_HOST = 'mail.gmx.com'
+EMAIL_HOST_USER = 'engsci_conga@gmx.com'
+EMAIL_HOST_PASSWORD = 'a1b2c3d4'
+EMAIL_USE_TLS = True
