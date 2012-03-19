@@ -3,6 +3,7 @@ __author__ = 'Oliver'
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from datetime import datetime
 
 class Course(models.Model):
     year = models.SmallIntegerField(verbose_name = 'Course Year')
@@ -32,7 +33,7 @@ class Student_file(models.Model):
     course = models.ForeignKey(Course)
     owner = models.ForeignKey(User)
     note = models.FileField(upload_to = 'notes/%s/'
-    % str(owner))
+    % str(datetime.now()).split(".")[0].replace(':', '_').replace('-', '_'))
     last_modified = models.DateTimeField(auto_now = True)
     name = models.CharField(max_length = 100)
     file_type = models.ForeignKey(File_type)
