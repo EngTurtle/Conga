@@ -20,6 +20,11 @@ class File_upload(forms.Form):
                            label = u'File')
     name = forms.CharField(required = False,
                            label = u'File Name',
-                           label = u'default to your filename')
+                           initial = u'default to your filename')
 
-    # TODO write a function that renames the uploaded files in a structured way to prevent blackboard's one filename problem
+
+
+
+
+    # TODO write a function that renames the uploaded files in a structured way to prevent blackboard's one filename
+    # problem

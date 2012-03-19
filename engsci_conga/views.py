@@ -1,10 +1,10 @@
-__author__ = 'Oliver'
+__author__ = 'Oliver Liang, Brian To'
 
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from models import *
 
-# TODO def file_upload(request):
+#def file_upload(request):
 
 def home(request):
     """
@@ -23,7 +23,7 @@ def home(request):
     courses = [dict(course_name = c.course_name, course_code = c.course_code, course_year = c.year,
                     course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
     return render_to_response('home.html', {'course_list': courses,
-                                            'is_logged_in': is_logged_in}, context_instance=RequestContext(request))
+                                            'is_logged_in': is_logged_in}, context_instance = RequestContext(request))
 
     # TODO add a builtin login box
 
@@ -44,19 +44,17 @@ def courses_view(request, course):
     files = Student_file.objects.filter(course = c)
     types = File_type.objects.all()
 
-    # TODO: Implement new templating structure that will allow the app to display all types (and files of type) independently of {%regroup%}
+    # DONE: Implement new templating structure that will allow the app to display all types (and files of type)
+    # independently of {%regroup%}
 
-    # files_by_type = {}
-    # for t in types:
-    #     files_by_type[t] = files.filter(file_type = t)
-    #
-    #
-    # print files_by_type
-
+    files_by_type = {}
+    for t in types:
+        files_by_type[t] = files.filter(file_type = t)
 
     response = {'course_name': c.course_name,
                 'course_code': c.course_code,
                 'types': types,
-                'files': files,
+                'files': files_by_type,
+                #'files' : files,
                 'is_logged_in': is_logged_in}
-    return render_to_response('course.html', response, context_instance=RequestContext(request))
+    return render_to_response('course.html', response, context_instance = RequestContext(request))

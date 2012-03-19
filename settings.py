@@ -120,7 +120,8 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     # Conga apps
-    'Conga.engsci_conga'
+    'Conga.engsci_conga',
+    'Conga.user_manage'
     )
 
 # A sample logging configuration. The only tangible logging

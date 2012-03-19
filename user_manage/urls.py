@@ -5,7 +5,7 @@ from django.contrib.auth.views import login, logout
 from django.core.urlresolvers import reverse
 
 urlpatterns = patterns('user_manage.views',
-    #url(r'^register/$', 'register'),
+    #url(r'^register/$', 'register', {'success_url' : reverse('engsci_conga.views.home'}),
 )
 
 urlpatterns += patterns('',

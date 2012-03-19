@@ -11,7 +11,7 @@
     {{types|unordered_list}}
 
     {% regroup files|dictsort:"type_weighting" by type as type_list%}
-
+    <!-- TODO impliment the new list based organization -->
     {% for type in type_list %}
     <h2 id="esc-courses-year-{{year.grouper}}">{{ type.grouper }}</h2>
     <ul>

@@ -46,5 +46,5 @@ class RegistrationForm(reg_forms.RegistrationForm):
         """
         number = self.cleaned_data['student_number']
         if not is_student_number(number):
-            raise forms.ValidationError(_("Please enter your valid U of T student number."))
+            raise forms.ValidationError(_("Please enter your U of T student number."))
         return self.cleaned_data['student_number']
