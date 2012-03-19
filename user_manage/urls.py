@@ -5,10 +5,10 @@ from django.contrib.auth.views import login, logout
 from django.core.urlresolvers import reverse
 
 urlpatterns = patterns('user_manage.views',
-    #url(r'^register/$', 'register', {'success_url' : reverse('engsci_conga.views.home'}),
+    url(r'^register/$', 'register', {'success_url' : reverse('engsci_conga.views.home')}),
 )
 
 urlpatterns += patterns('',
     (r'^login/$', login),
-                        url(r'^logout/$', logout, {'next_page': reverse('engsci_conga.views.home')}),
-                        )
+    url(r'^logout/$', logout, {'next_page': reverse('engsci_conga.views.home')}),
+)

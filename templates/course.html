@@ -8,23 +8,11 @@
 
 <div class="squeeze">
 
-    {{types|unordered_list}}
-
-    {% regroup files|dictsort:"type_weighting" by type as type_list%}
-    <!-- TODO impliment the new list based organization -->
-    {% for type in type_list %}
-    <h2 id="esc-courses-year-{{year.grouper}}">{{ type.grouper }}</h2>
+    {% for type in files %}
+    <h2>{{ type.name }}{{type.files|pluralize}}</h2>
     <ul>
-        {% regroup type.list|dictsort:"year" by year as file_list %}
-        {% for year in file_list %}
-        <li> {{year.grouper}}
-            <ul>
-                {%for file in year.list %}
-                <li><a href="{{file.note.url}}">{{file.name}}</a></li>
-                {%endfor%}
-            </ul>
-
-        </li>
+        {% for file in type.files %}
+            <li><a href="{{file.note.url}}">{{file.year}} - {{file.name}}</a></li>
         {%endfor%}
     </ul>
     {% endfor %}

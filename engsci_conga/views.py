@@ -47,9 +47,10 @@ def courses_view(request, course):
     # DONE: Implement new templating structure that will allow the app to display all types (and files of type)
     # independently of {%regroup%}
 
-    files_by_type = {}
+    files_by_type = []
+    i = 0
     for t in types:
-        files_by_type[t] = files.filter(file_type = t)
+        files_by_type.append(dict(name = t.type_name, files=files.filter(file_type = t)))
 
     response = {'course_name': c.course_name,
                 'course_code': c.course_code,
