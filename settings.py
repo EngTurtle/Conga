@@ -161,4 +161,4 @@ ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_HOST = 'mail.gmx.com'
 EMAIL_HOST_USER = 'engsci_conga@gmx.com'
 EMAIL_HOST_PASSWORD = 'a1b2c3d4'
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = False
