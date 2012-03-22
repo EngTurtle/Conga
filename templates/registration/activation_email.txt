@@ -1,0 +1,11 @@
+Howdy!
+
+Welcome to EngSci Courses. Your account has been created
+and is pending activation.
+
+Please activate your account by using the following activation key:
+{{activation_key}} within the next {{expiration_days}} day{{expiration_days|pluralize}}.
+
+Thanks,
+
+The EngSci Courses team
