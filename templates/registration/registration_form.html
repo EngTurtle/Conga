@@ -9,7 +9,11 @@
     {% if form.errors %}
         <p class="error">Sorry, that's not a valid username or password</p>
     {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
 
     {{ form }}
+        <input type="submit" />
+    </form>
 
 {% endblock %}
