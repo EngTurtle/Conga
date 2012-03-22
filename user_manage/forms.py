@@ -22,8 +22,8 @@ def is_student_number(number):
 
 
 class RegistrationForm(reg_forms.RegistrationForm):
-    student_number = forms.IntegerField(max_value = 999999999, min_value = 1,
-                                        label = u"Student Number")
+    # student_number = forms.IntegerField(max_value = 999999999, min_value = 1,
+    #                                    label = u"Student Number")
     email = forms.EmailField(widget = forms.TextInput(attrs = dict(attrs_dict,
                                                                    maxlength = 75)),
                              label = _("Email address"),
@@ -40,11 +40,11 @@ class RegistrationForm(reg_forms.RegistrationForm):
             raise forms.ValidationError(_("This service is only for University of Toronto students and staff."))
         return self.cleaned_data['email']
 
-    def clean_student_number(self):
-        """
-        Checks if the supplied student number is a valid U of T number.
-        """
-        number = self.cleaned_data['student_number']
-        if not is_student_number(number):
-            raise forms.ValidationError(_("Please enter your U of T student number."))
-        return self.cleaned_data['student_number']
+        # def clean_student_number(self):
+        #     """
+        #     Checks if the supplied student number is a valid U of T number.
+        #     """
+        #     number = self.cleaned_data['student_number']
+        #     if not is_student_number(number):
+        #         raise forms.ValidationError(_("Please enter your U of T student number."))
+        #     return self.cleaned_data['student_number']

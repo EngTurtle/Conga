@@ -8,7 +8,7 @@ from user_manage.models import Student
 from registration.backends import get_backend
 
 # From registration backend,
-def register(request, backend, success_url = None,
+def register(request, backend, success_url = '/',
              disallowed_url = 'registration_disallowed',
              extra_context = None):
     """
@@ -116,5 +116,5 @@ def register(request, backend, success_url = None,
     for key, value in extra_context.items():
         context[key] = callable(value) and value() or value
 
-    return render_to_response("registration/register.html", {'form': form},
+    return render_to_response("registration/registration_form.html", {'form': form},
                               context_instance = context)

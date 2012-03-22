@@ -23,4 +23,5 @@ urlpatterns = patterns('',
 
                        # User management
                        url(r'^auth/', include('user_manage.urls')),
+                       url(r'^register/', include('registration.backends.default.urls')),
                        )

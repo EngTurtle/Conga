@@ -154,6 +154,9 @@ LOGGING = {
 # User profile information
 AUTH_PROFILE_MODULE = 'user_manage.models.Student'
 
+# Account activation days
+ACCOUNT_ACTIVATION_DAYS = 7
+
 # email settings
 EMAIL_HOST = 'mail.gmx.com'
 EMAIL_HOST_USER = 'engsci_conga@gmx.com'
