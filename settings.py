@@ -5,8 +5,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-# ('Your Name', 'your_email@example.com'),
-)
+    ('Admin', 'admin@admin.ca'),
+    )
 
 MANAGERS = ADMINS
 
@@ -52,7 +52,7 @@ MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'mediafiles').replace('\\',
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'userfiles/'
+MEDIA_URL = 'files/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -124,7 +124,7 @@ INSTALLED_APPS = (
 
     # Conga apps
     'Conga.engsci_conga',
-    'Conga.user_manage'
+    'Conga.user_manage',
     )
 
 # A sample logging configuration. The only tangible logging
@@ -161,4 +161,12 @@ ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_HOST = 'mail.gmx.com'
 EMAIL_HOST_USER = 'engsci_conga@gmx.com'
 EMAIL_HOST_PASSWORD = 'a1b2c3d4'
+EMAIL_PORT = 25
 EMAIL_USE_TLS = False
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Django transfer
+PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'
+SERVE_FILE_BACKEND = 'filetransfers.backends.default.serve_file'
+PUBLIC_DOWNLOAD_URL_BACKEND = 'filetransfers.backends.default.public_download_url'

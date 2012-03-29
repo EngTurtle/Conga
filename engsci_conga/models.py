@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from datetime import datetime
+from settings import MEDIA_URL
 
 class Course(models.Model):
     year = models.SmallIntegerField(verbose_name = 'Course Year')
@@ -32,8 +33,9 @@ class File_type(models.Model):
 class Student_file(models.Model):
     course = models.ForeignKey(Course)
     owner = models.ForeignKey(User)
-    note = models.FileField(upload_to = 'notes/%s/'
-    % str(datetime.now()).split(".")[0].replace(':', '_').replace('-', '_'))
+    note = models.FileField(upload_to = 'userfile/{date_time}'.format(
+        date_time = str(datetime.now()).split(".")[0].replace(':', '_').replace('-', '_'))
+    )
     last_modified = models.DateTimeField(auto_now = True)
     name = models.CharField(max_length = 100)
     file_type = models.ForeignKey(File_type)
@@ -41,3 +43,11 @@ class Student_file(models.Model):
 
     def __unicode__(self):
         return self.note.name
+
+    def get_absolute_url(self):
+        url = '/{media_file}{user}/{pk}/'.format(
+            media_file = MEDIA_URL,
+            user = self.owner.username,
+            pk = self.pk
+        )
+        return url

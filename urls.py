@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import patterns, include, url
+from settings import MEDIA_URL
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -24,4 +25,7 @@ urlpatterns = patterns('',
                        # User management
                        url(r'^auth/', include('user_manage.urls')),
                        url(r'^register/', include('registration.backends.default.urls')),
+
+                       # file download handling
+                       url(r'^{media_url}'.format(media_url = MEDIA_URL), include('engsci_conga.Fileserving.urls')),
                        )
