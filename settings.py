@@ -1,6 +1,5 @@
 # Django settings for testing project.
 import os.path
-from django.core.urlresolvers import reverse
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -153,7 +152,7 @@ LOGGING = {
         }
 }
 
-LOGIN_URL = reverse('django.contrib.auth.views.login')
+LOGIN_URL = '/auth/login/'
 
 # User profile information
 AUTH_PROFILE_MODULE = 'user_manage.models.Student'

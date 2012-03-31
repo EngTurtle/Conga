@@ -27,9 +27,9 @@
         <div id="filter-and-signin" class="grid_8">
             <p id="users" class="top">{% if user.is_authenticated %}<strong>{{ user.username }}</strong>
                 |{% if user.is_staff %} <a href="admin/">Administration</a> {% endif %}|
-
-
-                <a href="{% url django.contrib.auth.views.logout %}">Log out</a>{% else %}
+                <a href="{% url django.contrib.auth.views.logout %}">Log out</a> |
+                <a href="{% url engsci_conga.views.file_upload %}">Upload</a>
+            {% else %}
                 <a href="{% url registration.views.register %}">Register</a>
                 or <a href="{% url django.contrib.auth.views.login %}">Log in</a>{% endif %}
             </p>
