@@ -26,7 +26,7 @@
         </div>
         <div id="filter-and-signin" class="grid_8">
             <p id="users" class="top">{% if user.is_authenticated %}<strong>{{ user.username }}</strong>
-                |{% if user.is_staff %} <a href="/admin/">Administration</a> {% endif %}|
+                |{% if user.is_staff %} <a href="admin/">Administration</a> {% endif %}|
 
 
                 <a href="{% url django.contrib.auth.views.logout %}">Log out</a>{% else %}
