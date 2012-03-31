@@ -88,4 +88,7 @@ def courses_view(request, course):
                 'files': files_by_type,
                 #'files' : files,
                 'is_logged_in': is_logged_in}
-    return render_to_response('course.html', response, context_instance = RequestContext(request))
+    return render_to_response('course.html', response, context_instance = RequestContext(request))0
+    
+# TODO def user delete file(request):
+    	
