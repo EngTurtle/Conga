@@ -2,12 +2,12 @@
 
 body {
     font-family: "Open Sans", "Lucida Grande", Tahoma, sans-serif;
-    background: rgb(230,230,230);
+    background: rgb(230, 230, 230);
 }
 
 /* Graphics */
 #site-header {
-    background-color: rgb(26,26,26);
+    background-color: rgb(26, 26, 26);
     border-bottom: 4px solid #fff;
 
 }
@@ -16,6 +16,7 @@ body {
 #site-header {
     color: #eee;
 }
+
 #site-header #page-logo {
     font-family: Georgia, serif;
     font-size: 24px;
@@ -24,33 +25,33 @@ body {
 }
 
 a, a:visited {
-    color: rgba(0,128,255,255);
+    color: rgba(0, 128, 255, 255);
     text-decoration: none;
 }
 
 a:hover {
-    color: rgba(0,100,200,255);
+    color: rgba(0, 100, 200, 255);
 }
 
 a:visited {
 
 }
 
-
 #site-header #page-logo a b {
     font-family: "Helvetica Neue", Arial, Helvetica, serif;
     font-style: normal;
 }
 
-#site-header #course-button,#site-header #course-button a {
+#site-header #course-button, #site-header #course-button a {
     display: block;
     width: 100%;
 }
+
 #site-header #course-button a {
     font-weight: 800;
     width: 100%;
     font-size: 20px;
-    color: rgb(0,20,69);
+    color: rgb(0, 20, 69);
     text-decoration: none;
     background: #fff;
     padding: 12px 0 12px 12px;
@@ -75,7 +76,7 @@ a:visited {
     padding: 12px 0 0 0; /* 40px in total */
 }
 
-#site-header .bottom{
+#site-header .bottom {
     height: 40px;
     padding: 0px 0 2px 0; /* 42px in total */
 }
@@ -98,7 +99,7 @@ a:visited {
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
-    border: 1px solid rgb(0,128,255);
+    border: 1px solid rgb(0, 128, 255);
 }
 
 #site-header #filter:focus {
@@ -110,7 +111,7 @@ a:visited {
 /* Course list */
 #course-list {
     background: #fff;
-    border-top: 4px solid rgb(0,128,255);
+    border-top: 4px solid rgb(0, 128, 255);
     position: relative;
     box-shadow: #bbb 0 4px 4px;
 }
