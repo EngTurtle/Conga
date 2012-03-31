@@ -1,5 +1,6 @@
 # Django settings for testing project.
 import os.path
+from django.core.urlresolvers import reverse
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -125,6 +126,8 @@ INSTALLED_APPS = (
     # Conga apps
     'Conga.engsci_conga',
     'Conga.user_manage',
+
+    'filetransfers'
     )
 
 # A sample logging configuration. The only tangible logging
@@ -150,6 +153,7 @@ LOGGING = {
         }
 }
 
+LOGIN_URL = reverse('django.contrib.auth.views.login')
 
 # User profile information
 AUTH_PROFILE_MODULE = 'user_manage.models.Student'

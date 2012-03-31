@@ -19,11 +19,11 @@ class File_upload(forms.Form):
                                     empty_label = u'Please select an associated course')
     file_type = forms.ModelChoiceField(queryset = FILE_TYPES,
                                        label = u'File Type')
-    file = forms.FileField(required = True,
+    note = forms.FileField(required = True,
                            label = u'File')
     name = forms.CharField(required = False,
                            label = u'File Name',
-                           initial = u'default to your filename')
+                           help_text = u'default to your filename')
     year = forms.IntegerField(label = 'Year')
 
     def clean_year(self):
@@ -33,3 +33,4 @@ class File_upload(forms.Form):
         if year < 1970 or year > current_year:
             raise forms.ValidationError(_("please enter a valid year"))
         return self.cleaned_data['year']
+

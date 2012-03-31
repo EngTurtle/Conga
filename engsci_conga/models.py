@@ -34,10 +34,10 @@ class Student_file(models.Model):
     course = models.ForeignKey(Course)
     owner = models.ForeignKey(User)
     note = models.FileField(upload_to = 'userfile/{date_time}'.format(
-        date_time = str(datetime.now()).split(".")[0].replace(':', '_').replace('-', '_'))
+        date_time = str(datetime.now()).split(".")[0].replace(':', '_').replace('-', '_').replace(' ', '/'))
     )
-    last_modified = models.DateTimeField(auto_now = True)
-    name = models.CharField(max_length = 100)
+    last_modified = models.DateTimeField(auto_now = True, editable = False)
+    name = models.CharField(max_length = 100, blank = True)
     file_type = models.ForeignKey(File_type)
     year = models.SmallIntegerField(verbose_name = 'Year of file')
 

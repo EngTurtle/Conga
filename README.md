@@ -19,14 +19,16 @@ Instructions to demo the site on a local dev server.
 
 2. Install django registration from http://bitbucket.org/ubernostrum/django-registration/ and follow the built in docs to install it.
 
-3. download and unzip this repo onto your computer.
+3. Install django filetransfer from http://www.allbuttonspressed.com/projects/django-filetransfers and follow the documentation on the site to install it.
 
-4. in the folder you unziped to, create two new folders, one named mediafiles, and another named database.
+4. download and unzip this repo onto your computer.
 
-5. run the manage.py file with the command line argument: syncdb.
+5. in the folder you unziped to, create two new folders, one named mediafiles, and another named database.
 
-6. follow the command line instructions to create your admin account.
+6. run the manage.py file with the command line argument: syncdb.
 
-7. run the manage.py file with the command line argument: runserver.
+7. follow the command line instructions to create your admin account.
 
-8. go to http://127.0.0.1:8000/ and http://127.0.0.1:8000/admin/ to try things out. login with the admin account you just created.
+8. run the manage.py file with the command line argument: runserver.
+
+9. go to http://127.0.0.1:8000/ and http://127.0.0.1:8000/admin/ to try things out. login with the admin account you just created.

@@ -27,5 +27,6 @@ urlpatterns = patterns('',
                        url(r'^register/', include('registration.backends.default.urls')),
 
                        # file download handling
-                       url(r'^{media_url}'.format(media_url = MEDIA_URL), include('engsci_conga.Fileserving.urls')),
-                       )
+                       url(r'^{media_url}'.format(media_url = MEDIA_URL), include('engsci_conga.File_handling.urls')),
+                       url(r'^upload/', 'engsci_conga.views.file_upload')
+)
