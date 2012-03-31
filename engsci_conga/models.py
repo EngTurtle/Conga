@@ -51,3 +51,5 @@ class Student_file(models.Model):
             pk = self.pk
         )
         return url
+
+        # TODO write a signal to fill in the name of the file if it's empty when saving

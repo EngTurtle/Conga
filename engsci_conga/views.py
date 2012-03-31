@@ -71,12 +71,8 @@ def courses_view(request, course):
     if request.user.is_authenticated():
         is_logged_in = True
     c = get_object_or_404(Course, course_code = course.upper())
-    del course
     files = Student_file.objects.filter(course = c)
     types = File_type.objects.all()
-
-    # DONE: Implement new templating structure that will allow the app to display all types (and files of type)
-    # independently of {%regroup%}
 
     files_by_type = []
     for t in types:
@@ -86,9 +82,5 @@ def courses_view(request, course):
                 'course_code': c.course_code,
                 'types': types,
                 'files': files_by_type,
-                #'files' : files,
                 'is_logged_in': is_logged_in}
-    return render_to_response('course.html', response, context_instance = RequestContext(request))0
-    
-# TODO def user delete file(request):
-    	
+    return render_to_response('course.html', response, context_instance = RequestContext(request))
