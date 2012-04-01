@@ -54,6 +54,11 @@ class Student_file(models.Model):
         )
         return url
 
+    def delete_url(self):
+        return reverse('engsci_conga.File_handling.views.delete_handler',
+                       kwargs = {'user': self.owner.username, 'pk': self.pk}
+        )
+
 
 @receiver(post_save, sender = Student_file)
 def note_name_fill(sender, **kwargs):
