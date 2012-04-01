@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Delete {{ f.name }}{% endblock %}
+
+{% block heading %}<h1>
+    {% if error %}
+        {{ error }}
+    {% endif %}
+{% endblock %}</h1>
+{% block content %}
+    <ul>Are you sure you want to delete {{ f.name }}?</ul>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="delete"/>
+    </form>
+{% endblock content %}

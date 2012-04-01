@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
+from django.template.context import RequestContext
 from filetransfers.api import serve_file
 from engsci_conga.models import Student_file
 from django.http import Http404, HttpResponseRedirect
@@ -20,17 +21,25 @@ def download_handler(request, user, pk):
 
 @login_required
 def delete_handler(request, user, pk):
+    error = None
     f = get_object_or_404(Student_file, pk = pk)
+
     if f.owner.username != user:
         raise Http404
+
     if f.owner != request.user:
-        raise Http404
-    f.delete()
-    return HttpResponseRedirect(reverse(
-        'engsci_conga.views.courses_view',
-        kwargs = {'course': str(f.course)}
-    )
-    )
+        error = u"This is not your file! You are now on Santa's naughty list!!"
+
+    if request.method == 'POST':
+        f.delete()
+        return HttpResponseRedirect(reverse(
+            'engsci_conga.views.courses_view',
+            kwargs = {'course': str(f.course)}
+        )
+        )
+
+    return render_to_response('delete_form.html', {'error': error, 'f': f},
+                              context_instance = RequestContext(request))
 
 
 @receiver(post_delete, sender = Student_file)
