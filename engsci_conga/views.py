@@ -84,3 +84,15 @@ def courses_view(request, course):
                 'files': files_by_type,
                 'is_logged_in': is_logged_in}
     return render_to_response('course.html', response, context_instance = RequestContext(request))
+
+def list_all_courses(request):
+    """
+    This view returns a list of all courses.
+    """
+    courses = Course.objects.all()
+    courses = [dict(course_name = c.course_name, course_code = c.course_code, course_year = c.year,
+        course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
+
+    response = {'courses': courses}
+
+    return render_to_response('all_courses.json', response, context_instance = RequestContext(request))

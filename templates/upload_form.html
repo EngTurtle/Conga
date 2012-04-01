@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Upload Form{% endblock %}
+{% block title %}Upload{% endblock %}
 
-{% block heading %}<h1>{{ user.username }}
-{% endblock %}</h1>
+{% block heading %}{{ user.username }}{% endblock %}
 {% block content %}
+    <h2>Upload file</h2>
     {% load filetransfers %}
     <form action="{{ upload_url }}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}

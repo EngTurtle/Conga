@@ -65,10 +65,12 @@ a:visited {
 
 #site-header #course-button.selected a {
     height: 36px;
-
+    z-index: 999;
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
+    box-shadow: #bbb 0 0 8px;
+
 }
 
 #site-header .top {
@@ -113,7 +115,20 @@ a:visited {
     background: #fff;
     border-top: 4px solid rgb(0, 128, 255);
     position: relative;
-    box-shadow: #bbb 0 4px 4px;
+    box-shadow: #bbb 0 0 8px;
+    z-index: 998;
+}
+
+.shadow-white {
+    background: rgba(255,255,255,.95);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 555;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
 }
 
 #course-list h1 {
@@ -134,4 +149,9 @@ a:visited {
 
 .squeeze {
     padding: 10px;
+}
+
+#heading h1 {
+    font-weight: 100;
+    font-size: 2em;
 }

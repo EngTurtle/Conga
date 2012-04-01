@@ -1,8 +1,10 @@
-for (;;);
 {
-"payload": {
-"courses": {
-
-}
-}
+    "courses": {
+    {% for course in courses %}
+        "{{course.course_code}}": {
+            "course_name":"{{course.course_name}}",
+            "url":"{{course.course_url}}"
+        },
+    {% endfor %}
+    }
 }
