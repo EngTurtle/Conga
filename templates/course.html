@@ -9,7 +9,7 @@
             <h2>{{ type.name }}{{ type.files|pluralize }}</h2>
             <ul>
                 {% for file in type.files %}
-                    <li><a href="{{file.get_absolute_url}}">{{ file.year }} - {{ file.name }}</a></li>
+                    <li><a href="{{file.get_absolute_url}}">{{ file.year }} - {{ file.name }}</a> {%if file.owner == user %} (<a href="{{file.delete_url}}">delete</a>) {%endif%}</li>
                 {% endfor %}
             </ul>
         {% endfor %}
