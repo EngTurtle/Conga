@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from datetime import datetime
 from settings import MEDIA_URL
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 class Course(models.Model):
     year = models.SmallIntegerField(verbose_name = 'Course Year')
@@ -52,4 +54,15 @@ class Student_file(models.Model):
         )
         return url
 
-        # TODO write a signal to fill in the name of the file if it's empty when saving
+
+@receiver(post_save, sender = Student_file)
+def note_name_fill(sender, **kwargs):
+    """
+    This signal fills in the name of the student file with the filename if the name is empty
+    """
+    instance = kwargs.get('instance')
+    if instance is not None:
+        if instance.name == u'':
+            filename = instance.note.name.rsplit('/')[-1]
+            instance.name = filename
+            instance.save()

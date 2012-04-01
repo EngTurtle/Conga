@@ -24,7 +24,8 @@ class File_upload(forms.Form):
     name = forms.CharField(required = False,
                            label = u'File Name',
                            help_text = u'default to your filename')
-    year = forms.IntegerField(label = 'Year')
+    year = forms.IntegerField(label = 'Year',
+                              initial = date.today().year)
 
     def clean_year(self):
         year = self.cleaned_data['year']
