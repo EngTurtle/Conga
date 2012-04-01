@@ -29,8 +29,7 @@ def delete_handler(request, user, pk):
 
     if f.owner != request.user:
         error = u"This is not your file! You are now on Santa's naughty list!!"
-
-    if request.method == 'POST' and error is not None:
+    elif request.method == 'POST' and f.owner == request.user:
         f.delete()
         return HttpResponseRedirect(reverse(
             'engsci_conga.views.courses_view',
