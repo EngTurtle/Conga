@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}{{ course_code }} {{ course_name }} - EngSci Courses{% endblock %}
-{% block heading %}{{ course_code }} <strong>{{ course_name }}</strong>{% endblock %}
+{% block title %}{{ course.course_code }} {{ course.course_name }} - EngSci Courses{% endblock %}
+{% block heading %}{{ course.course_code }} <strong>{{ course.course_name }}</strong>{% endblock %}
 {% block content %}
 
     <div class="squeeze">
 
         {% for type in files %}
-            <h2>{{ type.name }}{{ type.files|pluralize }}</h2>
-            <ul>
-                {% for file in type.files %}
-                    <li><a href="{{file.get_absolute_url}}">{{ file.year }} - {{ file.name }}</a></li>
-                {% endfor %}
-            </ul>
+            {% if type.files %}
+                <h2>{{ type.name }}{{ type.files|pluralize }}</h2>
+                <ul>
+                    {% for file in type.files %}
+                        <li><a href="{{file.get_absolute_url}}">{{ file.year }} - {{ file.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         {% endfor %}
 
     </div>

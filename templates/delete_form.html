@@ -7,8 +7,8 @@
     {% endif %}
 {% endblock %}</h1>
 {% block content %}
-    {% if error == None %}
-        <ul>Are you sure you want to delete {{ f.name }}?</ul>
+    {% if user == f.owner %}
+        <ul>Are you sure you want to delete {{ f.name }} from {{ f.year }}?</ul>
         <form method="post">
             {% csrf_token %}
             <input type="submit" value="delete"/>

@@ -78,12 +78,12 @@ def courses_view(request, course):
     for t in types:
         files_by_type.append(dict(name = t.type_name, files = files.filter(file_type = t)))
 
-    response = {'course_name': c.course_name,
-                'course_code': c.course_code,
+    response = {'course': c,
                 'types': types,
                 'files': files_by_type,
                 'is_logged_in': is_logged_in}
     return render_to_response('course.html', response, context_instance = RequestContext(request))
+
 
 def list_all_courses(request):
     """
@@ -91,7 +91,7 @@ def list_all_courses(request):
     """
     courses = Course.objects.all()
     courses = [dict(course_name = c.course_name, course_code = c.course_code, course_year = c.year,
-        course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
+                    course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
 
     response = {'courses': courses}
 
