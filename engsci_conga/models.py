@@ -66,3 +66,4 @@ def note_name_fill(sender, **kwargs):
             filename = instance.note.name.rsplit('/')[-1]
             instance.name = filename
             instance.save()
+    pass
