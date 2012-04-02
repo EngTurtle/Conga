@@ -7,8 +7,10 @@ from engsci_conga.forms import *
 from django.http import HttpResponseRedirect
 from filetransfers.api import prepare_upload
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 
-@login_required#(login_url=reverse('django.contrib.auth.views.login'))
+@csrf_protect
+@login_required
 def file_upload(request):
     view_url = reverse(file_upload)
 
@@ -25,7 +27,6 @@ def file_upload(request):
             )
             sf.save()
             return HttpResponseRedirect(reverse('engsci_conga.views.courses_view',
-                                                #'engsci_conga.views.home'
                                                 kwargs = {'course': str(cd['course'])}
             ))
     else:
@@ -37,7 +38,7 @@ def file_upload(request):
                               context_instance = RequestContext(request))
 
 
-def home(request):
+def course_list(request):
     """
     The dictionary this function gives to the template is the the following format:
     {'course_list': {[ {course_name='Praxis II', course_code='ESC102', course_url='/courses/esc102/', course_year=1},
@@ -47,14 +48,10 @@ def home(request):
                     }
     }
     """
-    is_logged_in = False
-    if request.user.is_authenticated():
-        is_logged_in = True
     courses = Course.objects.all()
     courses = [dict(course_name = c.course_name, course_code = c.course_code, course_year = c.year,
                     course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
-    return render_to_response('home.html', {'course_list': courses,
-                                            'is_logged_in': is_logged_in}, context_instance = RequestContext(request))
+    return render_to_response('home.html', {'course_list': courses}, context_instance = RequestContext(request))
 
     # TODO add a builtin login box
 
@@ -67,9 +64,6 @@ def courses_view(request, course):
 	 'types' : [ {type_name=..., type_weight=...int}, repeating...]
 	 'files': [ {name=..., type=...str, type_weighting=...int, url=..., year=...int}, repeating ] }
 	"""
-    is_logged_in = False
-    if request.user.is_authenticated():
-        is_logged_in = True
     c = get_object_or_404(Course, course_code = course.upper())
     files = Student_file.objects.filter(course = c)
     types = File_type.objects.all()
@@ -80,8 +74,7 @@ def courses_view(request, course):
 
     response = {'course': c,
                 'types': types,
-                'files': files_by_type,
-                'is_logged_in': is_logged_in}
+                'files': files_by_type}
     return render_to_response('course.html', response, context_instance = RequestContext(request))
 
 

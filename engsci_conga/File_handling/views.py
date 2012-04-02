@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template.context import RequestContext
+from django.views.decorators.csrf import csrf_protect
 from filetransfers.api import serve_file
 from engsci_conga.models import Student_file
 from django.http import Http404, HttpResponseRedirect
@@ -19,6 +20,7 @@ def download_handler(request, user, pk):
     return serve_file(request, upload.note, save_as = True)
 
 
+@csrf_protect
 @login_required
 def delete_handler(request, user, pk):
     error = None
@@ -42,8 +44,10 @@ def delete_handler(request, user, pk):
 
 
 @receiver(post_delete, sender = Student_file)
-def file_delete(sender, **kwargs):
-    instance = kwargs.get('instance')
+def file_delete(sender, instance = None, **kwargs):
+    """
+    This signal handler deletes the associated file from disk when a student file is deleted from the database.
+    """
     if instance is not None:
         path = "{media_files}/{file_dir}".format(media_files = settings.MEDIA_ROOT,
                                                  file_dir = instance.note.name
