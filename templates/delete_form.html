@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Delete {{ f.name }}{% endblock %}
 
-{% block heading %}<h1>
+{% block heading %}
     {% if error %}
         {{ error }}
     {% endif %}
-{% endblock %}</h1>
+{% endblock %}
 {% block content %}
     {% if user == f.owner %}
         <ul>Are you sure you want to delete {{ f.name }} from {{ f.year }}?</ul>
