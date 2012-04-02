@@ -1,8 +1,8 @@
-Write templates for account self management
-    include forms for:
-        email change
-        password change
-    allow user to see and delete all their files
+[high priority] Write templates for account self management
+        include forms for:
+            email change
+            password change
+        allow user to see and delete all their files
 
 [low priority] join the password reset system into the site
 
@@ -16,8 +16,11 @@ Fix up the existing template to conform with the site design
 
 [High priority] Get permission to load this site (at least as a dev/demo deploy) on a skule server!!!
 
-[low priority] Refactor the code so to have three django apps
+[low priority] Refactor the code into three separate django apps
                     User_manage
                     Course_manage
                     Note_sharing
             So to have the site extensible in the future
+[low priority] make a filter by user file list
+
+[low priority] have a combined register and login page.
