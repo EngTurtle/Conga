@@ -1,19 +1,23 @@
-{% extends 'base.html' %}
-{% block title %}{{ course.course_code }} {{ course.course_name }} - EngSci Courses{% endblock %}
+{% extends 'layout_canvas.html' %}
+{% block subtitle %}{{ course.course_code }} {{ course.course_name }}{% endblock %}
 {% block heading %}{{ course.course_code }} <strong>{{ course.course_name }}</strong>{% endblock %}
+
 {% block content %}
 
     <div class="squeeze">
 
         {% for type in files %}
-            {% if type.files %}
                 <h2>{{ type.name }}{{ type.files|pluralize }}</h2>
+            {% if type.files %}
+
                 <ul>
                     {% for file in type.files %}
                         <li><a href="{{file.get_absolute_url}}">{{ file.year }} - {{ file.name }}</a>
                             {% if file.owner == user %} (<a href="{{file.delete_url}}">delete</a>) {% endif %}</li>
                     {% endfor %}
                 </ul>
+            {% else %}
+                <p>There aren't any files in this category! <br /> You should <a href="{% url engsci_conga.views.file_upload %}">upload one</a>.</p>
             {% endif %}
         {% endfor %}
 
