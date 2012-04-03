@@ -99,13 +99,14 @@ def register(request, backend, success_url = '/',
         form = form_class(data = request.POST, files = request.FILES)
         if form.is_valid():
             new_user = backend.register(request, **form.cleaned_data)
-            student = Student(student_number = form_class.student_number,
+            student_number = form.cleaned_data['student_number']
+            student = Student(student_number = student_number,
                               user = new_user)
+            student.save()
             if success_url is None:
                 to, args, kwargs = backend.post_registration_redirect(request, new_user)
                 return redirect(to, *args, **kwargs)
             else:
-                student.save()
                 return redirect(success_url)
     else:
         form = form_class()

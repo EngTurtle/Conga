@@ -156,6 +156,7 @@ LOGIN_URL = '/auth/login/'
 
 # User profile information
 AUTH_PROFILE_MODULE = 'user_manage.models.Student'
+MIN_STORAGE_QUOTA = 1024 # In MB
 
 # Account activation days
 ACCOUNT_ACTIVATION_DAYS = 7
@@ -168,6 +169,10 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# dev email settings
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(os.path.dirname(__file__), 'dev/email_output/') # change this to a proper location
 
 # Django transfer
 PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'

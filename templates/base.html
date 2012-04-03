@@ -32,7 +32,7 @@
                 |{% if user.is_staff %} <a href="http://localhost:8000/admin/">Administration</a> | {% endif %}
                 <a href="{% url django.contrib.auth.views.logout %}">Log out</a>
             {% else %}
-                <a href="{% url registration.views.register %}">Register</a>
+                <a href="{% url user_manage.views.register %}">Register</a>
                 or <a href="{% url django.contrib.auth.views.login %}">Log in</a>{% endif %}
             </p>
             {# TODO fix-up the header #}
@@ -40,8 +40,10 @@
             </form>
         </div>
         <div id="call-to-action" class="grid_4 omega clearfix">
-            <p>Help us out</p><p>
-            <a href="{% url engsci_conga.views.file_upload %}">Upload files now</a></p>
+            <p>Help us out</p>
+
+            <p>
+                <a href="{% url engsci_conga.views.file_upload %}">Upload files now</a></p>
         </div>
     </div>
 </header>

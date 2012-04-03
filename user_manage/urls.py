@@ -2,10 +2,8 @@ __author__ = 'Oliver'
 
 from django.conf.urls.defaults import *
 from django.views.generic import TemplateView
-from django.views.generic.simple import direct_to_template
 from registration.views import activate
-from registration.views import register
-from user_manage.forms import RegistrationForm
+from user_manage.views import register
 
 urlpatterns = patterns('',
                        url(r'^activate/complete/$',
@@ -21,15 +19,13 @@ urlpatterns = patterns('',
                            name = 'registration_activate'),
                        url(r'^register/$',
                            register,
-                               {'backend': 'registration.backends.default.DefaultBackend',
-                                'form_class': RegistrationForm},
+                               {'backend': 'registration.backends.default.DefaultBackend'},
                            name = 'registration_register'),
                        url(r'^register/complete/$',
                            TemplateView.as_view(template_name = 'registration/registration_complete.html'),
                            name = 'registration_complete'),
-                       url(r'^register/closed/$',
-                           direct_to_template,
-                               {'template': 'registration/registration_closed.html'},
-                           name = 'registration_disallowed'),
+                       #url(r'^register/closed/$',
+                       #    TemplateView.as_view(template_name = 'registration/registration_closed.html'),
+                       #    name = 'registration_disallowed'),
                        url(r'', include('registration.auth_urls')),
                        )
