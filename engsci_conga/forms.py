@@ -1,7 +1,9 @@
+from Course_Manage.models import Course
+
 __author__ = 'Oliver'
 
 from django import forms
-from models import Course, File_type
+from models import  File_type
 from datetime import date
 from django.utils.translation import ugettext_lazy as _
 

@@ -8,7 +8,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^$', 'engsci_conga.views.course_list', name = "root"),
+                       url(r'^$', 'Course_Manage.views.course_list', name = "root"),
 
                        # Examples:
                        # url(r'^$', 'testing.views.course_list', name='course_list'),

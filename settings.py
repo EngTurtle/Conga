@@ -123,8 +123,9 @@ INSTALLED_APPS = (
     'registration',
 
     # Conga apps
-    'Conga.engsci_conga',
-    'Conga.user_manage',
+    'engsci_conga',
+    'user_manage',
+    'Course_Manage',
 
     'filetransfers'
     )

@@ -8,7 +8,7 @@ from user_manage.models import Student
 from registration.backends import get_backend
 
 # From registration backend,
-def register(request, backend, success_url = '/',
+def register(request, backend, success_url = None,
              disallowed_url = 'registration_disallowed',
              extra_context = None):
     """
@@ -93,16 +93,21 @@ def register(request, backend, success_url = '/',
     backend = get_backend(backend)
     if not backend.registration_allowed(request):
         return redirect(disallowed_url)
+
+    #use custom registration form
     form_class = forms.RegistrationForm
 
     if request.method == 'POST':
         form = form_class(data = request.POST, files = request.FILES)
         if form.is_valid():
             new_user = backend.register(request, **form.cleaned_data)
+
+            # added to handle user profile at the same time as registration
             student_number = form.cleaned_data['student_number']
             student = Student(student_number = student_number,
                               user = new_user)
             student.save()
+
             if success_url is None:
                 to, args, kwargs = backend.post_registration_redirect(request, new_user)
                 return redirect(to, *args, **kwargs)

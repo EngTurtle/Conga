@@ -2,14 +2,14 @@
 {% block title %}EngSci Courses{% endblock %}
 {% block heading %}Welcome!{% endblock %}
 {% block content %}
-
-    {% regroup course_list|dictsort:"course_year" by course_year as year_list %}
+    {# TODO fix this template #}
+    {% regroup course_list by year as year_list %}
 
     <div class="grid_2 alpha">
         <div class="squeeze">
             <strong>Year</strong>
             {% for year in year_list %}
-                <a href="#esc-courses-year-{{year.grouper}}">{{ year.grouper }}</a>
+                <a href="#esc-courses-year-{{ year.grouper }}">{{ year.grouper }}</a>
             {% endfor %}
         </div>
     </div>
@@ -20,7 +20,7 @@
                 <h2 id="esc-courses-year-{{year.grouper}}">Year {{ year.grouper }}</h2>
                 <ul>
                     {% for course in year.list %}
-                        <li><a href="{{ course.course_url }}"><b>{{ course.course_code }}</b>
+                        <li><a href="{{ course.get_absolute_url }}"><b>{{ course.course_code }}</b>
                             {{ course.course_name }} </a></li>
                     {% endfor %}
                 </ul>

@@ -38,24 +38,6 @@ def file_upload(request):
                               context_instance = RequestContext(request))
 
 
-def course_list(request):
-    """
-    The dictionary this function gives to the template is the the following format:
-    {'course_list': {[ {course_name='Praxis II', course_code='ESC102', course_url='/courses/esc102/', course_year=1},
-                       {course_name='Calculus II', course_code='MAT195', course_url='/course/mat105/', course_year=1},
-                       {course_name='Engineering Design', course_code'AER201', course_url='/courses/aer201/',
-                       course_year=2} ]
-                    }
-    }
-    """
-    courses = Course.objects.all()
-    courses = [dict(course_name = c.course_name, course_code = c.course_code, course_year = c.year,
-                    course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
-    return render_to_response('home.html', {'course_list': courses}, context_instance = RequestContext(request))
-
-    # TODO add a builtin login box
-
-
 def courses_view(request, course):
     """
 	This view gives a dictionary to the template in the following format:
@@ -77,15 +59,3 @@ def courses_view(request, course):
                 'files': files_by_type}
     return render_to_response('course.html', response, context_instance = RequestContext(request))
 
-
-def list_all_courses(request):
-    """
-    This view returns a list of all courses.
-    """
-    courses = Course.objects.all()
-    courses = [dict(course_name = c.course_name, course_code = c.course_code, course_year = c.year,
-                    course_url = '/course/%s/' % c.course_code.lower()) for c in courses]
-
-    response = {'courses': courses}
-
-    return render_to_response('all_courses.json', response, context_instance = RequestContext(request))

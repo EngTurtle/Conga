@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 # lands in trunk, this will no longer be necessary.
 attrs_dict = {'class': 'required'}
 
-allowed_domains = [u'utoronto.ca', u'ecf.utoronto.ca', u'toronto.edu']
+allowed_domains = [u'utoronto.ca', u'ecf.utoronto.ca', u'toronto.edu', u'mail.utoronto.ca']
 
 def is_student_number(number):
     """
@@ -22,7 +22,7 @@ def is_student_number(number):
 
 
 class RegistrationForm(reg_forms.RegistrationForm):
-    student_number = forms.IntegerField(max_value = 999999999, min_value = 1,
+    student_number = forms.IntegerField(max_value = 1500000000, min_value = 1,
                                         label = u"Student Number")
     email = forms.EmailField(widget = forms.TextInput(attrs = dict(attrs_dict,
                                                                    maxlength = 75)),
@@ -44,7 +44,7 @@ class RegistrationForm(reg_forms.RegistrationForm):
 
         existing_emails = User.objects.filter(email__iexact = email)
         if len(existing_emails):
-            raise forms.ValidationError(_("This email address have already been registered."))
+            raise forms.ValidationError(_("This email address has already been registered."))
 
         return self.cleaned_data['email']
 
