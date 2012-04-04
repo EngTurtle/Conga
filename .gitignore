@@ -16,3 +16,5 @@ mediafiles/*
 settings.py
 
 filetransfers/*
+
+dev/*

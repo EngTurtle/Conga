@@ -23,7 +23,7 @@ Instructions to demo the site on a local dev server.
 
 4. download and unzip this repo onto your computer.
 
-5. in the folder you unziped to, create two new folders, one named mediafiles, and another named database.
+5. in the folder you unziped to, create three new folders, one named mediafiles, another named database, and one named dev. Then create a folder called email_output in dev.
 
 6. run the manage.py file with the command line argument: syncdb.
 
