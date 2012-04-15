@@ -173,7 +173,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 # dev email settings
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(os.path.dirname(__file__), 'dev/email_output/') # change this to a proper location
+EMAIL_FILE_PATH = os.path.join(os.path.dirname(__file__), 'dev/email_output/')
+# change this to a proper location
 
 # Django transfer
 PREPARE_UPLOAD_BACKEND = 'filetransfers.backends.default.prepare_upload'
