@@ -1,3 +1,14 @@
+TESTING
+[high priority] Write unit tests for all the code!!!
+    1. The models for course manage
+    2. The views for course manage
+    3. The models for note sharing
+    4. The forms for uploading
+    5. The file handling internals
+        File deletion
+        Filling in empty names
+    6. The views for file uploading and downloading
+
 FUNCTIONAL
 [high priority] Write templates for account self management
         include forms for: [Done]
@@ -19,7 +30,7 @@ REFACTORING
                     Note_sharing
             So to have the site extensible in the future
 
-[low priority] Wrap the model views into Class based generic views
+[low priority] Wrap the views of individual models into Subclasses of Class based generic views
 
 FRONTEND DESIGN
 [High priority] Finishing the base template for the overall site
