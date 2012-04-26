@@ -8,3 +8,6 @@ class Student(models.Model):
                                               unique = True)
     storage_quota = models.SmallIntegerField(verbose_name = 'Storage Space',
                                              default = MIN_STORAGE_QUOTA)
+
+    def __unicode__(self):
+        return self.user.username
