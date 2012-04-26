@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 # lands in trunk, this will no longer be necessary.
 attrs_dict = {'class': 'required'}
 
-allowed_domains = [u'utoronto.ca', u'ecf.utoronto.ca', u'toronto.edu', u'mail.utoronto.ca']
+allowed_domains = [ u'utoronto.ca', u'ecf.utoronto.ca', u'toronto.edu', u'mail.utoronto.ca' ]
 
 def is_student_number(number):
     """
@@ -36,23 +36,21 @@ class RegistrationForm(reg_forms.RegistrationForm):
         Check the supplied email address against a list of known allowed
         email domains.
         """
-        email = self.cleaned_data['email']
-        email_domain = email.split('@')[1]
+        email = self.cleaned_data[ 'email' ]
 
-        if email_domain not in allowed_domains:
+        if email.split('@')[ 1 ] not in allowed_domains:
             raise forms.ValidationError(_("This service is only for University of Toronto students and staff."))
 
-        existing_emails = User.objects.filter(email__iexact = email)
-        if len(existing_emails):
+        if User.objects.filter(email__iexact = email):
             raise forms.ValidationError(_("This email address has already been registered."))
 
-        return self.cleaned_data['email']
+        return self.cleaned_data[ 'email' ]
 
     def clean_student_number(self):
         """
         Checks if the supplied student number is a valid U of T number.
         """
-        number = self.cleaned_data['student_number']
+        number = self.cleaned_data[ 'student_number' ]
         if not is_student_number(number):
             raise forms.ValidationError(_("Please enter a valid U of T student number."))
-        return self.cleaned_data['student_number']
+        return self.cleaned_data[ 'student_number' ]
