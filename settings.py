@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Admin', 'admin@admin.ca'),
+    ('Admin', 'engsci_conga@gmx.com'),
     )
 
 MANAGERS = ADMINS
@@ -33,7 +33,7 @@ TIME_ZONE = 'America/Toronto'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-CA'
 
 SITE_ID = 1
 
@@ -146,7 +146,7 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': [ 'mail_admins' ],
             'level': 'ERROR',
             'propagate': True,
             },
