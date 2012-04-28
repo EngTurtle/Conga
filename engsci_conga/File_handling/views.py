@@ -17,7 +17,7 @@ def download_handler(request, user, pk):
     upload = get_object_or_404(Student_file, pk = pk)
     if upload.owner.username != user:
         raise Http404
-    return serve_file(request, upload.note, save_as = True)
+    return serve_file(request, upload.note, save_as = False)
 
 
 @csrf_protect
@@ -50,11 +50,10 @@ def file_delete(sender, instance = None, **kwargs):
     """
     if instance is not None:
         path = "{media_files}/{file_dir}".format(media_files = settings.MEDIA_ROOT,
-                                                 file_dir = instance.note.name
-        )
+                                                 file_dir = instance.note.name)
 
         # allow for Windows and UNIX environments.
-        if path[0] != '/':
+        if path[ 0 ] != '/':
             path = path.replace('/', '\\')
 
         try:

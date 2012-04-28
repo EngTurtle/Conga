@@ -24,7 +24,7 @@ class Student_file(models.Model):
     course = models.ForeignKey(Course)
     owner = models.ForeignKey(User)
     note = models.FileField(upload_to = 'userfile/{date_time}'.format(
-        date_time = str(datetime.now()).split(".")[0].replace(':', '_').replace('-', '_').replace(' ', '/'))
+        date_time = str(datetime.now()).split(".")[ 0 ].replace(':', '_').replace('-', '_').replace(' ', '/'))
     )
     last_modified = models.DateTimeField(auto_now = True, editable = False)
     name = models.CharField(max_length = 100, blank = True)
@@ -32,7 +32,7 @@ class Student_file(models.Model):
     year = models.SmallIntegerField(verbose_name = 'Year of file')
 
     def __unicode__(self):
-        return self.note.name
+        return self.note.name.rsplit('/')[ -1 ]
 
     def get_absolute_url(self):
         url = '/{media_file}{user}/{pk}/'.format(
@@ -56,7 +56,7 @@ def note_name_fill(sender, **kwargs):
     instance = kwargs.get('instance')
     if instance is not None:
         if instance.name == u'':
-            filename = instance.note.name.rsplit('/')[-1]
+            filename = instance.note.name.rsplit('/')[ -1 ]
             instance.name = filename
             instance.save()
     pass

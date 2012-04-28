@@ -4,6 +4,7 @@ from django import forms
 from registration import forms as reg_forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from models import Student
 
 # From the registration forms:
 # I put this on all required fields, because it's easier to pick up
@@ -53,4 +54,6 @@ class RegistrationForm(reg_forms.RegistrationForm):
         number = self.cleaned_data[ 'student_number' ]
         if not is_student_number(number):
             raise forms.ValidationError(_("Please enter a valid U of T student number."))
+        if Student.objects.get(student_number = number):
+            raise forms.ValidationError(_("This Student number has already been registered."))
         return self.cleaned_data[ 'student_number' ]
