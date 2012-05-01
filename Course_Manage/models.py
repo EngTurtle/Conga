@@ -11,6 +11,11 @@ class Course(models.Model):
     def __unicode__(self):
         return self.course_code
 
+    def save(self, *args, **kwargs):
+        # So the course code is always stored uppercase
+        self.course_code = self.course_code.upper() # TODO move this to the clean function
+        super(Course, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
         """
         returns the url of this course.

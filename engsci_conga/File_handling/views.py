@@ -8,7 +8,7 @@ from engsci_conga.models import Student_file
 from django.http import Http404, HttpResponseRedirect
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
-import settings
+from django.conf import settings
 import os
 
 __author__ = 'Oliver'
