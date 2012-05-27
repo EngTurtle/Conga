@@ -7,7 +7,7 @@
     <div class="squeeze">
 
         {% for type in files %}
-                <h2>{{ type.name }}{{ type.files|pluralize }}</h2>
+            <h2>{{ type.name }}{{ type.files|pluralize }}</h2>
             {% if type.files %}
 
                 <ul>
@@ -17,7 +17,8 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                <p>There aren't any files in this category! <br /> You should <a href="{% url engsci_conga.views.file_upload %}">upload one</a>.</p>
+                <p>There aren't any files in this category! <br/> You should <a
+                        href="{% url Doc_sharing.views.file_upload %}">upload one</a>.</p>
             {% endif %}
         {% endfor %}
 

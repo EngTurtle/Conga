@@ -11,16 +11,16 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 
 
-class File_type(models.Model):
+class Doc_type(models.Model):
     """This represents the types of files on the site"""
-    type_name = models.CharField(max_length = 50)
-    type_weighting = models.SmallIntegerField(unique = True)
+    name = models.CharField(max_length = 50)
+    weighting = models.SmallIntegerField(unique = True)
 
     def __unicode__(self):
-        return self.type_name
+        return self.name
 
 
-class Student_file(models.Model):
+class Document(models.Model):
     course = models.ForeignKey(Course)
     owner = models.ForeignKey(User)
     note = models.FileField(upload_to = 'userfile/{date_time}'.format(
@@ -28,13 +28,13 @@ class Student_file(models.Model):
     )
     last_modified = models.DateTimeField(auto_now = True, editable = False)
     name = models.CharField(max_length = 100, blank = True)
-    file_type = models.ForeignKey(File_type)
+    file_type = models.ForeignKey(Doc_type)
     year = models.SmallIntegerField(verbose_name = 'Year of file')
 
     def __unicode__(self):
         return self.note.name.rsplit('/')[ -1 ]
 
-    def get_absolute_url(self):
+    def get_view_url(self):
         url = '/{media_file}{user}/{pk}/'.format(
             media_file = MEDIA_URL,
             user = self.owner.username,
@@ -42,14 +42,17 @@ class Student_file(models.Model):
         )
         return url
 
+    def get_absolute_url(self):
+        return self.get_view_url()
+
     def delete_url(self):
-        return reverse('engsci_conga.File_handling.views.delete_handler',
+        return reverse('Doc_sharing.File_handling.views.delete_handler',
                        kwargs = {'user': self.owner.username, 'pk': self.pk})
-        # TODO refactor the note handling separate models to allow for different types of documents
+        # TODO refactor the note handling to separate models to allow for different types of documents
         # (such as uploaded files, url links, and text files)
 
 
-@receiver(post_save, sender = Student_file)
+@receiver(post_save, sender = Document)
 def note_name_fill(sender, **kwargs):
     # TODO move this function to the model's clean function
     """

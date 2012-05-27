@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Admin', 'engsci_conga@gmx.com'),
+    ('Admin', 'Doc_sharing@gmx.com'),
     )
 
 MANAGERS = ADMINS
@@ -123,7 +123,7 @@ INSTALLED_APPS = (
     'registration',
 
     # Conga apps
-    'engsci_conga',
+    'Doc_sharing',
     'user_manage',
     'Course_Manage',
 
@@ -164,7 +164,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 
 # email settings
 EMAIL_HOST = 'mail.gmx.com'
-EMAIL_HOST_USER = 'engsci_conga@gmx.com'
+EMAIL_HOST_USER = 'Doc_sharing@gmx.com'
 EMAIL_HOST_PASSWORD = 'a1b2c3d4'
 EMAIL_PORT = 25
 EMAIL_USE_TLS = False

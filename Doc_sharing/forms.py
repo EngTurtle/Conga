@@ -3,7 +3,7 @@ from Course_Manage.models import Course
 __author__ = 'Oliver'
 
 from django import forms
-from models import  File_type
+from models import  Doc_type
 from datetime import date
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,7 +14,7 @@ class CourseForm(forms.ModelForm):
 
 class File_upload(forms.Form):
     ALL_COURSES = Course.objects.all()
-    FILE_TYPES = File_type.objects.all()
+    FILE_TYPES = Doc_type.objects.all()
 
     course = forms.ModelChoiceField(queryset = ALL_COURSES,
                                     label = u'Course Code',
@@ -30,10 +30,10 @@ class File_upload(forms.Form):
                               initial = date.today().year)
 
     def clean_year(self):
-        year = self.cleaned_data['year']
-        current_year = int(str(date.today()).split('-')[0])
+        year = self.cleaned_data[ 'year' ]
+        current_year = int(str(date.today()).split('-')[ 0 ])
 
         if year < 1970 or year > current_year:
             raise forms.ValidationError(_("please enter a valid year"))
-        return self.cleaned_data['year']
+        return self.cleaned_data[ 'year' ]
 

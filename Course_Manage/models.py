@@ -20,4 +20,4 @@ class Course(models.Model):
         """
         returns the url of this course.
         """
-        return reverse('engsci_conga.views.courses_view', kwargs = {'course': self.course_code})
+        return reverse('Doc_sharing.views.courses_view', kwargs = {'course': self.course_code.lower()})
