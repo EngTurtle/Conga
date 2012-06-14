@@ -1,9 +1,10 @@
-__author__ = 'Oliver'
-
+from django.contrib.auth.models import User
 from django.test import TestCase
 from Course_Manage.models import Course
-from models import Doc_type
+from models import *
 from django.db.utils import IntegrityError
+
+__author__ = 'Oliver'
 
 class File_type_test(TestCase):
     def setUp(self):
@@ -29,3 +30,25 @@ class File_type_test(TestCase):
         else:
             standardMsg = "Two types should not have the same weighting"
             self.fail(self._formatMessage(None, standardMsg))
+
+
+class Course_document_test(TestCase):
+    def setUp(self):
+        """
+        Creating the test environment
+        """
+        self.user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
+        self.MSE160 = Course.objects.create(year = 1, course_code = 'MSE160', course_name = 'Molecules and Materials')
+        self.ESC101 = Course.objects.create(year = 1, course_code = 'ESC101', course_name = 'Praxis I')
+        self.notes = Doc_type.objects.create(name = "notes", weighting = 50)
+        self.tests = Doc_type.objects.create(name = "test", weighting = 10)
+
+        self.doc1 = Test_document.objects.create(name = 'doc1', owner = self.user, text = 'a1b2c3d4')
+        self.doc2 = Test_document.objects.create(name = 'doc2', owner = self.user, text = 'kjads;lk')
+
+        self.course_doc_1 = Course_document.objects.create(name = 'doc1', course = self.MSE160,
+                                                           owner = self.user, year = 2012,
+                                                           type = self.notes, doc = self.doc1)
+        self.course_doc_1 = Course_document.objects.create(name = 'doc2', course = self.ESC101,
+                                                           owner = self.user, year = 2012,
+                                                           type = self.tests, doc = self.doc2)

@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from filetransfers.api import serve_file
-from Doc_sharing.models import Document
+from Doc_sharing.models import Course_document
 from django.http import Http404, HttpResponseRedirect
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
@@ -14,7 +14,7 @@ import os
 __author__ = 'Oliver'
 
 def download_handler(request, user, pk):
-    upload = get_object_or_404(Document, pk = pk)
+    upload = get_object_or_404(Course_document, pk = pk)
     if upload.owner.username != user:
         raise Http404
     return serve_file(request, upload.note, save_as = False)
@@ -24,7 +24,7 @@ def download_handler(request, user, pk):
 @login_required
 def delete_handler(request, user, pk):
     error = None
-    f = get_object_or_404(Document, pk = pk)
+    f = get_object_or_404(Course_document, pk = pk)
 
     if f.owner.username != user:
         raise Http404
@@ -43,7 +43,7 @@ def delete_handler(request, user, pk):
                               context_instance = RequestContext(request))
 
 
-@receiver(post_delete, sender = Document)
+@receiver(post_delete, sender = Course_document)
 def file_delete(sender, instance = None, **kwargs):
     """
     This signal handler deletes the associated file from disk when a student file is deleted from the database.

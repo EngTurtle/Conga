@@ -19,12 +19,12 @@ def file_upload(request):
         form = File_upload(request.POST, request.FILES)
         if form.is_valid():
             cd = form.cleaned_data
-            sf = Document(course = cd[ 'course' ],
-                          owner = request.user,
-                          note = cd[ 'note' ],
-                          name = cd[ 'name' ],
-                          file_type = cd[ 'file_type' ],
-                          year = cd[ 'year' ]
+            sf = Course_document(course = cd[ 'course' ],
+                                 owner = request.user,
+                                 note = cd[ 'note' ],
+                                 name = cd[ 'name' ],
+                                 file_type = cd[ 'type' ],
+                                 year = cd[ 'year' ]
             )
             sf.save()
             return HttpResponseRedirect(reverse('Doc_sharing.views.courses_view',

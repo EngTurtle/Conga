@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from Course_Manage.models import Course
-from Doc_sharing.models import Document, Doc_type
+from Doc_sharing.models import Course_document, Doc_type
 
 def course_list(request):
     courses = Course.objects.all()
@@ -35,7 +35,7 @@ def courses_view(request, course):
 	 'files': [ {name=..., type=...str, weighting=...int, url=..., year=...int}, repeating ] }
 	"""
     c = get_object_or_404(Course, course_code = course.upper())
-    files = Document.objects.filter(course = c)
+    files = Course_document.objects.filter(course = c)
     types = Doc_type.objects.all()
 
     files_by_type = [ ]
