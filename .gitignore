@@ -11,6 +11,7 @@ Thumbs.db
 registration/*
 database/*
 mediafiles/*
+*.bak
 
 #settings
 settings.py
