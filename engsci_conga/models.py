@@ -44,14 +44,12 @@ class Student_file(models.Model):
 
     def delete_url(self):
         return reverse('engsci_conga.File_handling.views.delete_handler',
-                       kwargs = {'user': self.owner.username, 'pk': self.pk})
-        # TODO refactor the note handling separate models to allow for different types of documents
-        # (such as uploaded files, url links, and text files)
+                       kwargs = {'user': self.owner.username, 'pk': self.pk}
+        )
 
 
 @receiver(post_save, sender = Student_file)
 def note_name_fill(sender, **kwargs):
-    # TODO move this function to the model's clean function
     """
     This signal fills in the name of the student file with the filename if the name is empty
     """

@@ -11,5 +11,3 @@ def django_path_to_system(path = ''):
 
 def system_path_to_django(path = ''):
     return path.replace('\\', '/')
-
-#def path_from_media_root(path = ''):

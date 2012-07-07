@@ -6,7 +6,7 @@ from engsci_conga.models import Student_file
 from django.http import  HttpResponseRedirect
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
-from django.conf import settings
+import settings
 import os
 
 __author__ = 'Oliver'
